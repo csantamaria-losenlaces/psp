@@ -10,16 +10,18 @@
 
 import java.util.concurrent.Semaphore;
 
-public class Peluqueria {
+public class Principal {
 
 	public static void main(String[] args) {
-		Semaphore s = new Semaphore(4); // Se declara e inicializa un semáforo con valor 4 (peluqueross disponibles)
+		
+		// Declaración de variables
+		Semaphore s = new Semaphore(4); // Semáforo con valor 4 (peluqueros disponibles)
 		final int MAXCLIENTES = 30; // Total de clientes que accederán a la peluquería
-		Cliente clientes[] = new Cliente[MAXCLIENTES]; // Se declara un array de 30 Clientes
+		Cliente clientes[] = new Cliente[MAXCLIENTES]; // Se declara un array de Clientes
 
 		// Se crea un objeto Cliente en cada posición del array
 		for (int i = 0; i < clientes.length; i++) {
-			clientes[i] = new Cliente(i + "", s);
+			clientes[i] = new Cliente(Integer.toString(i), s);
 		}
 
 		// Se inician los hilos del array "clientes"

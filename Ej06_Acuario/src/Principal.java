@@ -14,7 +14,7 @@ public class Principal {
 		
 		// Declaración de variables
 		final int AFORO = 50; // Aforo del acuario
-		final int NUMFAMILIAS = 15; // Número de familias
+		final int NUMFAMILIAS = 100; // Número de familias
 		
 		Visitante[] arrayFamilias = new Visitante[NUMFAMILIAS]; // Array que contendrá objetos de tipo Familia
 		Semaphore controlAforo = new Semaphore(AFORO); // Semáforo que controlará el aforo del acuario
