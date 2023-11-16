@@ -8,14 +8,13 @@
 public class ProductorConsumidor {
 
 	public static void main(String[] args) {
-		Recurso r=new Recurso();
-		Productor p=new Productor(r,100);//priductor añade 1 al recurso
-		Consumidor c=new Consumidor(r,3);//hilo consumidor consume 1
-		Consumidor d=new Consumidor (r,2);// hilo consumidor consume 2
+		Recurso r = new Recurso();
+		Productor p = new Productor(r, 100);// priductor añade 1 al recurso
+		Consumidor c = new Consumidor(r, 3);// hilo consumidor consume 1
+		Consumidor d = new Consumidor(r, 2);// hilo consumidor consume 2
 		c.start();
 		d.start();
 		p.start();
-		
 	}
 
 }
