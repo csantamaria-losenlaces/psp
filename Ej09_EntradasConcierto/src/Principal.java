@@ -7,20 +7,36 @@
  * cuenta que muchos compradores, cuando lleguen a casa y vean lo que han comprado,
  * pueden devolver las entradas.
  * 
- * Método de sincronziación: Productor-consumidor */
+ * Método de sincronziación: Monitores */
 
 public class Principal {
 
 	public static void main(String[] args) {
 		
-		Entrada entrada = new Entrada();
-		DevEntrada de = new DevEntrada(entrada, 100);
-		CompraEntrada c = new CompraEntrada(entrada, 3);
-		CompraEntrada d = new CompraEntrada(entrada, 2);
+		// Declaración de variables
+		final int TOTALENTRADAS = 200;
+		final int COMPRADORES_CONCURRENTES = 5000;
 		
-		c.start();
-		d.start();
-		d.start();
+		Concierto c = new Concierto(TOTALENTRADAS); // Se crea un concierto con 200 entradas
+		Thread[] compradores = new Thread[COMPRADORES_CONCURRENTES]; // 10 personas comprarán/devolverán entradas simultáneamente
+		
+		// Bucle para crear y ejecutar los 10 hilos
+		for (int i = 0; i < compradores.length; i++) {
+			compradores[i] = new Thread(new Cliente(c));
+			compradores[i].start();
+		}
+		
+		// Esperamos a que terminen todos los compradores
+		for (Thread t : compradores) {
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// Imprimimos las entradas restantes tras finalizar las compras/devoluciones
+		System.out.println("Los compradores han terminado. Queda/n " + c.getNumEntradas() + " entrada/s");
 		
 	}
 
