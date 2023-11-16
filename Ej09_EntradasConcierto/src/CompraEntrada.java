@@ -1,10 +1,9 @@
+public class CompraEntrada extends Thread {
 
-public class Consumidor extends Thread {
-
-	private Recurso r;
+	private Entrada r;
 	private int n;
 
-	public Consumidor(Recurso r, int n) {
+	public CompraEntrada (Entrada r, int n) {
 		this.r = r;
 		this.n = n;
 	}
@@ -14,5 +13,5 @@ public class Consumidor extends Thread {
 			r.sacar(n);
 		}
 	}
-
+	
 }

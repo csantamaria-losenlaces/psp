@@ -1,14 +1,14 @@
-
-public class Productor extends Thread {
-
-	private Recurso r;
+public class DevEntrada extends Thread {
+	
+	private Entrada r;
 	private int n;
-
-	public Productor(Recurso r, int n) {
+	
+	public DevEntrada (Entrada r, int n) {
+		super();
 		this.r = r;
 		this.n = n;
 	}
-
+	
 	public void run() {
 		while (true) {
 			r.poner(n);
@@ -19,5 +19,5 @@ public class Productor extends Thread {
 			}
 		}
 	}
-
+	
 }
