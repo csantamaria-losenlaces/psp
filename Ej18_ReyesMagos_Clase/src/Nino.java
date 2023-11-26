@@ -19,7 +19,7 @@ public class Nino extends Thread {
 		if (fila != null) {
 			try {
 				fila.acquire();
-				System.out.println("El nino " + orden + " se ha sentado con " + nombreRey);
+				System.out.println("El niño " + orden + " se ha sentado con " + nombreRey);
 				sleep(100);
 				buzon.dejarCarta(orden, nombreRey);
 				fila.release();

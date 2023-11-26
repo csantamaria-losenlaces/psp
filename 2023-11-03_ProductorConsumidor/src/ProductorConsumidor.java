@@ -1,10 +1,8 @@
-/*
- * En este tipo de problemas tenemos un recurso compartido y unos hilos
+/* En este tipo de problemas tenemos un recurso compartido y unos hilos
  * que consumen de ese recurso compartido y otros que generan.
  * Se establecen unos limites para el consumo y la generación de manera que los hilos
- *  consumidores deben esperar hasta que puedan consumir y los generadores hasta que puedan generear
- *  
- */
+ * consumidores deben esperar hasta que puedan consumir y los generadores hasta que puedan generear */
+
 public class ProductorConsumidor {
 
 	public static void main(String[] args) {

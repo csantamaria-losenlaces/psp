@@ -20,7 +20,7 @@ public class Buzon {
 	}
 	
 	public synchronized void enviarCarta (int orden, String nombreRey) {
-		System.out.println("Carta procesada del nino " + orden + " a " + nombreRey);
+		System.out.println("Carta procesada del niño " + orden + " a " + nombreRey);
 		notifyAll();
 	}
 	
