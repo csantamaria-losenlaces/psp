@@ -3,7 +3,7 @@ public class Principal {
 	public static void main(String[] args) {
 
 		// Declaración de variables
-		final int DIMENSIONARRAY = 90000000;
+		final int DIMENSIONARRAY = 90000000; // Valor muy alto para incrementar tiempo de ejecución
 		int[] array1 = new int[DIMENSIONARRAY];
 		int[] array2 = new int[DIMENSIONARRAY];
 		Thread h1;
@@ -37,8 +37,8 @@ public class Principal {
 
 		long endTime = System.currentTimeMillis(); // Terminamos de contar tiempo ejecución hilos
 
-		r1.imprimeSuma();
-		r2.imprimeSuma();
+		r1.imprimeMultiplicacion();
+		r2.imprimeMultiplicacion();
 
 		System.out.println("El programa ha finalizado");
 		System.out.println("Tiempo de ejecución de los hilos: " + (endTime - startTime) + "ms");
