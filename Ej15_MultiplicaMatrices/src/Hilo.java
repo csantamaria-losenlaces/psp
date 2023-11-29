@@ -1,3 +1,6 @@
+/* Nombre: Carlos Santamaría Gracia
+ * Curso: 2º D.A.M. Vespertino */
+
 public class Hilo implements Runnable {
 
 	// Declaración de atributos
@@ -34,6 +37,7 @@ public class Hilo implements Runnable {
 		}
 	}
 
+	// Método encargado de imprimir los resultados (tiene en cuenta qué mitad de cada array imprimir)
 	public void imprimeMultiplicacion() {
 		if (primeraMitad) {
 			for (int i = 0; i < array1.length / 2; i++) {

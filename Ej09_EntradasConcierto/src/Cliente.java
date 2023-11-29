@@ -1,3 +1,6 @@
+/* Nombre: Carlos Santamaría Gracia
+ * Curso: 2º D.A.M. Vespertino */
+
 public class Cliente implements Runnable {
 
 	// Atributos

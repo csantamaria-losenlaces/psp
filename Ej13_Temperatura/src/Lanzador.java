@@ -1,3 +1,6 @@
+/* Nombre: Carlos Santamaría Gracia
+ * Curso: 2º D.A.M. Vespertino */
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

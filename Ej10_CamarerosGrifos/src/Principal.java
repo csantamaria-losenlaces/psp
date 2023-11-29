@@ -1,3 +1,6 @@
+/* Nombre: Carlos Santamaría Gracia
+ * Curso: 2º D.A.M. Vespertino */
+
 import java.util.concurrent.Semaphore;
 
 public class Principal {
@@ -11,6 +14,7 @@ public class Principal {
 		Camarero[] arrayCamareros = new Camarero[NUMCAMAREROS];
 		String[] arrayClientes = new String[NUMCLIENTES];
 		
+		// Semáforos que reprensentan la disponibilidad de cada uno de los tres grifos
 		Semaphore grifoS = new Semaphore(1);
 		Semaphore grifoZ = new Semaphore(1);
 		Semaphore grifoT = new Semaphore(1);

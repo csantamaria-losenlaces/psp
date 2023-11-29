@@ -1,3 +1,6 @@
+/* Nombre: Carlos Santamaría Gracia
+ * Curso: 2º D.A.M. Vespertino */
+
 import java.util.concurrent.Semaphore;
 
 public class Cliente extends Thread {
