@@ -1,14 +1,15 @@
 /* Nombre: Carlos Santamaría Gracia
  * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
  * 
- * Clase que representa un buzón donde los niños depositan cartas para los reyes magos*/
+ * Clase que representa un buzón donde los niños depositan cartas para los reyes magos */
 
 public class Buzon {
 
     // Variable que indica si el buzón está vacío
     private boolean estaVacio = true;
 
-    // Constructor de la clase
+    // Constructor de la clase (vacío)
     public Buzon() {
     }
 

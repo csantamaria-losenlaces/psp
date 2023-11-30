@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ *
+ * Clase Alumno que contiene los atributos y métodos que simulan el comportamiento
+ * de una persona adquiriedo un recurso compartido concreto (patines). */
 
 import java.util.concurrent.Semaphore;
 

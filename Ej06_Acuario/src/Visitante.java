@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase visitante que contiene los atributos y métodos que representan
+ * la visita de un grupo de personas al acuario. */
 
 import java.util.concurrent.Semaphore;
 

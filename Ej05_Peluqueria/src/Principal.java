@@ -1,5 +1,6 @@
 /* Nombre: Carlos Santamaría Gracia
  * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
  * 
  * En una peluquería, hay 4 peluquer@s con todo lo necesario para atender clientes.
  * La llegada de éstos a la peluquería, es masiva, por lo que hay que organizar que no se quiten los puestos

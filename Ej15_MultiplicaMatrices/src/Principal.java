@@ -1,5 +1,15 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023 
+ * 
+ * Se tendrán dos arrays de 20.000 elementos cada uno, con números aleatorios entre el 1 y el
+ * 5000. Se pide crear un tercer array, en el que cada elemento sea la multiplicación de la
+ * misma posición de cada elemento de los otros dos arrays.
+ * Para agilizar el proceso, se utilizará la capacidad multiproceso del equipo, lanzando dos hilos
+ * en el que el primero multiplique los 10000 primeros números de los arrays y el segundo los
+ * otros 10000 números. Finalmente se mostrarán los resultados.
+ * Se medirá cuánto tarda con multiproceso y sin multiproceso. Si el tiempo es imperceptible,
+ * se pueden realizar las multiplicaciones como series de sumas. */
 
 public class Principal {
 
@@ -40,6 +50,7 @@ public class Principal {
 
 		long endTime = System.currentTimeMillis(); // Terminamos de contar tiempo ejecución hilos
 
+		// Se lanza el método imprimeMultiplicacion() para que cada hilo imprima su mitad del array de resultados
 		r1.imprimeMultiplicacion();
 		r2.imprimeMultiplicacion();
 

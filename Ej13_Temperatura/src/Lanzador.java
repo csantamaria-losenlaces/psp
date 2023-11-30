@@ -1,5 +1,6 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023 */
 
 import java.io.File;
 import java.io.IOException;

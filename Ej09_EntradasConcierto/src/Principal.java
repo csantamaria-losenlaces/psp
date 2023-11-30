@@ -1,5 +1,6 @@
 /* Nombre: Carlos Santamaría Gracia
  * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
  * 
  * Tenemos una aplicación para vender las entradas de un concierto de "Los Chunguitos", con
  * capacidad para 200 personas. La venta se realiza desde todos los puntos del universo, por

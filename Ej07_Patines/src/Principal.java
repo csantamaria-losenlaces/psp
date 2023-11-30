@@ -1,5 +1,6 @@
 /* Nombre: Carlos Santamaría Gracia
  * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
  * 
  * En una academia de patinaje tienen patines de los números 34 hasta el 43, dos pares de
  * cada número. Los alumnos de iniciación sólo requieren un patín, siendo siempre este el del

@@ -1,5 +1,6 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023 */
 
 import java.util.concurrent.Semaphore;
 
@@ -11,8 +12,8 @@ public class Principal {
 		final int NUMCAMAREROS = 4;
 		final int NUMCLIENTES = 25;
 		
-		Camarero[] arrayCamareros = new Camarero[NUMCAMAREROS];
-		String[] arrayClientes = new String[NUMCLIENTES];
+		Camarero[] arrayCamareros = new Camarero[NUMCAMAREROS]; // Array con NUMCAMAREROS instancias del objeto Camarero
+		String[] arrayClientes = new String[NUMCLIENTES]; // Array con NUMCLIENTES instancias del objeto Cliente
 		
 		// Semáforos que reprensentan la disponibilidad de cada uno de los tres grifos
 		Semaphore grifoS = new Semaphore(1);

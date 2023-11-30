@@ -1,5 +1,11 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase Hilo que implementa la interfaz Runnable y que realiza la tarea
+ * de multiplicar la primera o segunda mitad (según variable boolean)
+ * de dos arrays que se le pasan por parámetro en el constuctor y los
+ * añade a un tercer array con los resultados. */
 
 public class Hilo implements Runnable {
 

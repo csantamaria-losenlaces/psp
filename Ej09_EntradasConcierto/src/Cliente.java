@@ -1,5 +1,11 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase Cliente que realiza operaciones de compra y posible devolución
+ * de las entradas de un concierto. Se ha implementado una lógica de
+ * probabilidad para evitar que el programa termine con entradas sin
+ * vender porque se hayan devuelto demasiadas. */
 
 public class Cliente implements Runnable {
 

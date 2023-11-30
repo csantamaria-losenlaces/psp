@@ -1,5 +1,10 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase concierto que contiene el atributo y los métodos de la clase Concierto.
+ * Cada concierto tiene un número de entradas y se pueden realizar operaciones de
+ * compra y devolución de las mismas. */
 
 public class Concierto {
 

@@ -1,5 +1,10 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Llega el black Friday a Amazón, como campaña publicitaria se decide poner 10 unidades del
+ * último modelo de móvil a la venta por 10€. Se abrirá la oferta por web y es necesario regular
+ * perfectamente la venta para no vender más de 10 unidades, 15 clientes intentarán realizar la compra. */
 
 import java.util.concurrent.Semaphore;
 

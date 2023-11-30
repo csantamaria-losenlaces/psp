@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase Cliente que contiene atributos y métodos que simulan
+ * el comportamiento de un cliente en una peluquería. */
 
 import java.util.concurrent.Semaphore;
 

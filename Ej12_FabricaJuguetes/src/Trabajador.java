@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
-Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase que representa los atributos y métodos del objeto Trabajador,
+ * el cual tiene el rol de consumidor de jueguetes en el programa. */
 
 public class Trabajador extends Thread {
 

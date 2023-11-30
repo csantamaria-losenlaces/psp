@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
-Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase que contiene los atributos y métodos del objeto Productor,
+ * el cual representa la cinta que abastece el carro. */
 
 public class Productor extends Thread {
 
@@ -19,9 +23,8 @@ public class Productor extends Thread {
 		while (true) {
 			n = (int) (Math.random() * 5) + 1; // Número aleatorio entre 1 y 5
 			j.poner(n); // Se agregan "n" muñecas al carro
-			// Se esperan 100ms antes de añadir más muñecas al carro 
 			try {
-				sleep(100);
+				sleep(100); // Se esperan 100ms antes de añadir más muñecas al carro
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

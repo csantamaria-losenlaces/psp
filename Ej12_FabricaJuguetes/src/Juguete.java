@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase que contiene los atributos y métodos del objeto Juguete,
+ * el cual representa el recurso compartido de nuestro programa. */
 
 public class Juguete {
 

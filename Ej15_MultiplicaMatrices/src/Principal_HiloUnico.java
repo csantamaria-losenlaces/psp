@@ -1,5 +1,10 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Método en el que se ejecuta la misma lógica de las clases Principal + Hilo pero
+ * sin dos instancias paralelas del programa para comprobar el tiempo de ejecución
+ * y poderlo comparar con el tiempo de ejecución con dos hilos. */
 
 public class Principal_HiloUnico {
 

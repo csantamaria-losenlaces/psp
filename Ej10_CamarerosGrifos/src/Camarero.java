@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Clase del objeto Camarero con sus atributos y métodos. Recibe el semáforo de cada
+ * uno de los tres grifos y realiza la preparación de cócteles. */
 
 import java.util.concurrent.Semaphore;
 

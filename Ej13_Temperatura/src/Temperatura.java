@@ -1,5 +1,9 @@
 /* Nombre: Carlos Santamaría Gracia
- * Curso: 2º D.A.M. Vespertino */
+ * Curso: 2º D.A.M. Vespertino
+ * Fecha: 30/11/2023
+ * 
+ * Método que recibe mediante la entrada estándar (consola)
+ * un código postal de la ciudad e imprime su temperatura. */
 
 public class Temperatura {
 
