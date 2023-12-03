@@ -5,7 +5,7 @@ public class Ej04 {
 
 	public static void main(String[] args) throws IOException {
 		
-		ProcessBuilder pb = new ProcessBuilder("CMD", "/C", "iconfig");
+		ProcessBuilder pb = new ProcessBuilder("CMD", "/C", "ipconfig");
 		
 		File fOut = new File("salida.txt");
 		File fErr = new File("error.txt");
