@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +9,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Cliente {
 	
@@ -35,6 +40,7 @@ public class Cliente {
     	if (conectarAServidor()) {
     		pedirUsuario();
         	inicializarInterfaz();
+        	escritor.println(apodo + " se ha conectado.");
     	} else {
     		JOptionPane.showMessageDialog(null, "No se ha podido conectar al servidor",
                     "Error", JOptionPane.ERROR_MESSAGE);
@@ -45,44 +51,63 @@ public class Cliente {
      * @wbp.parser.entryPoint
      */
     private void inicializarInterfaz() {
+    	
         frame = new JFrame();
-        frame.setTitle("Chat - Carlos Santamaría (Conectado como " + apodo + ")");
+        frame.setTitle("Chat - Conectado como " + apodo);
         frame.setResizable(false);
         frame.setBounds(100, 100, 600, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        textField = new JTextField();
-        textField.setBounds(10, 420, 465, 24);
-        textField.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        textField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                enviarMensaje();
+        
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                escritor.println(apodo + " se ha desconectado.");
+            	System.exit(0);
             }
         });
+
+        textField = new JTextField();
+        textField.setBounds(10, 415, 465, 35);
+        textField.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        
+        textField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (!textField.getText().isBlank()) enviarMensaje();
+            }
+        });
+        
         frame.getContentPane().setLayout(null);
         
         scrollPane = new JScrollPane();
         scrollPane.setBounds(10, 11, 564, 398);
+        
         frame.getContentPane().add(scrollPane);
         
         textArea = new JTextArea();
+        
         scrollPane.setViewportView(textArea);
+        
         textArea.setLineWrap(true);
         textArea.setFont(new Font("Segoe UI", Font.PLAIN, 13));
         textArea.setEnabled(false);
-        textArea.setEditable(false);
         textArea.setDisabledTextColor(Color.BLACK);
+        
         frame.getContentPane().add(textField);
+        
         textField.setColumns(10);
+        
+        DefaultCaret caret = (DefaultCaret) textArea.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         
         btnEnviar = new JButton("Enviar");
         btnEnviar.setBounds(485, 415, 89, 35);
         btnEnviar.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+        
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                enviarMensaje();
+            	if (!textField.getText().isBlank()) enviarMensaje();
             }
         });
+        
         frame.getContentPane().add(btnEnviar);
     }
 
@@ -103,10 +128,11 @@ public class Cliente {
     }
 
     private void enviarMensaje() {
-        String mensaje = textField.getText();
+        Locale loc = new Locale.Builder().setLanguage("es").setRegion("ES").build();
+        DateFormat dateFormat = DateFormat.getTimeInstance(DateFormat.DEFAULT, loc);
+    	String mensaje = String.format("[%s] %s%n%s", apodo, dateFormat.format(new Date()), textField.getText());
         escritor.println(mensaje);
         textField.setText("");
-        //escritor.printf("[%s] %s", apodo, textField.getText());
     }
 
     private class ManejadorServidor implements Runnable {
@@ -121,7 +147,7 @@ public class Cliente {
             try {
                 String mensaje;
                 while ((mensaje = lectorSocket.readLine()) != null) {
-                	textArea.append(String.format("[%s] %s", apodo, mensaje));
+                	textArea.append(mensaje + "\n");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -130,9 +156,10 @@ public class Cliente {
     }
     
     private static void pedirUsuario() {
-    	while (apodo == null || apodo.isBlank()) {
+    	while (apodo == null || apodo.isBlank() || apodo.contains(" ")) {
     		apodo = (String) JOptionPane.showInputDialog(frame, "Por favor, introduce un nombre de usuario para acceder al chat:",
     				"Introducir nombre de usuario", JOptionPane.PLAIN_MESSAGE, null, null, "");
     	}
     }
+    
 }

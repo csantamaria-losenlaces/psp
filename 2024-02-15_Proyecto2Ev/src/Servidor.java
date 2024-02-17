@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Servidor {
+	
 	private List<PrintWriter> clientes = new ArrayList<>();
 
 	public static void main(String[] args) {
