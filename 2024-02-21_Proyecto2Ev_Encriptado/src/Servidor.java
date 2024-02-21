@@ -1,11 +1,13 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 public class Servidor {
 
 	private ArrayList<ManejadorCliente> listaClientes;
+	private ServerSocket serverSocket;
 
 	public Servidor() {
 		this.listaClientes = new ArrayList<>();
@@ -18,16 +20,16 @@ public class Servidor {
 
 	public void iniciarServidor() {
 		try {
-			ServerSocket serverSocket = new ServerSocket(5000);
-			System.out.println("Servidor iniciado y esperando conexiones...");
-
-			while (true) {
+			serverSocket = new ServerSocket(5000);
+			System.out.println("[SERVIDOR] Servidor iniciado y esperando conexiones...");
+			while (serverSocket != null) {
 				Socket socket = serverSocket.accept();
-				System.out.println("Nuevo cliente conectado");
+				System.out.println("[SERVIDOR] Nuevo cliente conectado");
 				ManejadorCliente manejadorCliente = new ManejadorCliente(socket, this);
-				listaClientes.add(manejadorCliente);
 				manejadorCliente.start();
+				listaClientes.add(manejadorCliente);
 			}
+		} catch (SocketException e) {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -35,7 +37,31 @@ public class Servidor {
 
 	public void desconectarCliente(ManejadorCliente manejadorCliente) {
 		listaClientes.remove(manejadorCliente);
-		System.out.println("Se ha eliminado el cliente de la lista de clientes");
+		System.out.println("[SERVIDOR] Se ha eliminado el cliente de la lista de clientes");
+		if (listaClientes.isEmpty()) {
+			try {
+				getServerSocket().close();
+				System.out.println("[SERVIDOR] No quedan clientes. Servidor detenido");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
+	
+	public void reenviarMensajeClientes(String mensajeRecibido) {
+		for (ManejadorCliente c : listaClientes) {
+			try {
+				c.getdOut().writeUTF(mensajeRecibido);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public ServerSocket getServerSocket() {
+		return serverSocket;
+	}
+	
+	
 
 }

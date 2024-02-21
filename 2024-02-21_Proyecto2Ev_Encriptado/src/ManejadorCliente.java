@@ -8,6 +8,11 @@ public class ManejadorCliente extends Thread {
 
 	private Socket socket;
 	private Servidor servidor;
+	
+	DataInputStream dIn;
+	DataOutputStream dOut;
+	
+	String mensajeRecibido;
 
 	public ManejadorCliente(Socket socket, Servidor servidor) {
 
@@ -21,18 +26,27 @@ public class ManejadorCliente extends Thread {
 
 		// Manejador del hilo
 		try {
-			DataInputStream dIn = new DataInputStream(socket.getInputStream());
-			DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
+			dIn = new DataInputStream(socket.getInputStream());
+			dOut = new DataOutputStream(socket.getOutputStream());
 			while (true) {
-				//System.out.println(dIn.readUTF());
-				dOut.writeUTF(dIn.readUTF());
+				mensajeRecibido = dIn.readUTF();
+				System.out.print("[MANEJADOR_CLIENTE] " + mensajeRecibido);
+				servidor.reenviarMensajeClientes(mensajeRecibido);
 			}
 		} catch (SocketException sE) {
-			System.out.println("Un cliente se ha desconectado");
+			System.out.println("[MANEJADOR_CLIENTE] Un cliente se ha desconectado");
 			servidor.desconectarCliente(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public DataOutputStream getdOut() {
+		return dOut;
+	}
+
+	public String getMensajeRecibido() {
+		return mensajeRecibido;
 	}
 
 }

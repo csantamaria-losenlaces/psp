@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.UTFDataFormatException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -26,7 +28,9 @@ public class ClienteGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static JFrame frame;
+	
 	private JPanel contentPane;
+	private static JTextArea textArea;
 	
 	private static DataOutputStream dOut;
 	private static DataInputStream dIn;
@@ -58,12 +62,25 @@ public class ClienteGUI extends JFrame {
 					if (pedirApodo()) {
 						ClienteGUI frame = new ClienteGUI();
 						frame.setVisible(true);
+						enviarMensajeAServidor(apodo + " se ha conectado", false);
+						textArea.setText("");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		
+		while (dIn != null) {
+			try {
+				String mensajeRecibido = dIn.readUTF();
+				textArea.append(mensajeRecibido);
+			} catch (SocketException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				System.exit(0);
+			}
+		}
 		
 	}
 
@@ -79,7 +96,7 @@ public class ClienteGUI extends JFrame {
         
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent we) {
-            	enviarMensaje(apodo + " se ha desconectado");
+            	enviarMensajeAServidor(apodo + " se ha desconectado", false);
 				System.exit(0);
             }
         });
@@ -91,7 +108,7 @@ public class ClienteGUI extends JFrame {
         textField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 if (!textField.getText().isBlank()) {
-					enviarMensaje(textField.getText());
+					enviarMensajeAServidor(textField.getText(), true);
 					textField.setText("");
 				}
             }
@@ -104,7 +121,7 @@ public class ClienteGUI extends JFrame {
         
         getContentPane().add(scrollPane);
         
-        JTextArea textArea = new JTextArea();
+        textArea = new JTextArea();
         
         scrollPane.setViewportView(textArea);
         
@@ -127,7 +144,7 @@ public class ClienteGUI extends JFrame {
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
             	if (!textField.getText().isBlank()) {
-            		enviarMensaje(textField.getText());
+            		enviarMensajeAServidor(textField.getText(), true);
 					textField.setText("");
             	}
             }
@@ -145,15 +162,25 @@ public class ClienteGUI extends JFrame {
     	return true;
     }
 	
-	private void enviarMensaje(String mensaje) {
-        Locale loc = new Locale.Builder().setLanguage("es").setRegion("ES").build();
+	private static void enviarMensajeAServidor(String mensaje, boolean cabecera) {
+        
+		Locale loc = new Locale.Builder().setLanguage("es").setRegion("ES").build();
         DateFormat dateFormat = DateFormat.getTimeInstance(DateFormat.DEFAULT, loc);
-    	String mensajeFormateado = String.format("[%s] %s%n%s", apodo, dateFormat.format(new Date()), mensaje);
+        String mensajeFormateado;
+    	if (cabecera) {
+    		mensajeFormateado = String.format("[%s] %s%n%s%n", apodo, dateFormat.format(new Date()), mensaje);
+    	} else {
+    		mensajeFormateado = String.format("%s%n", mensaje);
+    	}
     	try {
 			dOut.writeUTF(mensajeFormateado);
+		} catch (UTFDataFormatException e) {
+			JOptionPane.showMessageDialog(null, "El mensaje es demasiado largo",
+                    "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    	
     }
 
 }
