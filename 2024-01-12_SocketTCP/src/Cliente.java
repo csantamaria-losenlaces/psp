@@ -11,7 +11,7 @@ class Cliente {
   static final String HOST = "10.6.4.5";
 
 
-  static final int PUERTO=5000;
+  static final int PUERTO = 5000;
 
 
   public Cliente( ) {

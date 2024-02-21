@@ -5,7 +5,7 @@ import javax.crypto.*;
 
 public class Cliente {
     public static void main(String[] args) {
-        final String SERVIDOR = "localhost";
+        final String SERVIDOR = "10.6.4.138";
         final int PUERTO = 12345;
 
         try (Socket socket = new Socket(SERVIDOR, PUERTO)) {
