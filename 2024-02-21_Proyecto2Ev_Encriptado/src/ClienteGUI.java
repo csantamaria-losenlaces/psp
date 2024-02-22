@@ -91,7 +91,7 @@ public class ClienteGUI extends JFrame {
 	}
 
 	public ClienteGUI() {
-		ImageIcon icono = new ImageIcon("icono.png");
+		ImageIcon icono = new ImageIcon("src/icono.png");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
