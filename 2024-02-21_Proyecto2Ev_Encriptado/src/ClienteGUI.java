@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.DefaultCaret;
 
@@ -43,9 +46,12 @@ public class ClienteGUI extends JFrame {
 		final int PUERTO = 5000;
 		
 		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			Socket socket = new Socket(HOST, PUERTO);
 			dOut = new DataOutputStream(socket.getOutputStream());
 			dIn = new DataInputStream(socket.getInputStream());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (java.net.ConnectException e) {
@@ -85,10 +91,13 @@ public class ClienteGUI extends JFrame {
 	}
 
 	public ClienteGUI() {
+		ImageIcon icono = new ImageIcon("icono.png");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
 		setTitle("Chat - Conectado como " + apodo);
         setResizable(false);
+        setIconImage(icono.getImage());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
