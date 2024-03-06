@@ -11,14 +11,14 @@ public class UDPcliente {
 	public static void main(String[] args) throws Exception {
 
 		// Direccion de destino
-		InetAddress destino = InetAddress.getByName("DESKTOP-3DDD02H"); // También se puede poner una IP
+		InetAddress destino = InetAddress.getByName("192.168.1.255"); // También se puede poner una IP
 		
 		// Puerto de destino
 		int port = 12345;
 		
 		// Mensaje
 		byte[] mensaje = new byte[1024];
-		String saludo = "Saludo desde el cliente!!!";
+		String saludo = "¡Soy un mensaje con caracteres especiales! ÑÑñññáéíóúÁÉÍ";
 		mensaje = saludo.getBytes(); // Paso el mensaje a byte[]
 
 		// Cosntruyo el datagrama a enviar
@@ -36,4 +36,5 @@ public class UDPcliente {
 		socket.send(envio);
 		socket.close();
 	}
+	
 }

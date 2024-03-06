@@ -13,9 +13,10 @@ public class Monedero {
 	public synchronized void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
-	
+
 	public synchronized void donar(Integer n) {
-		this.cantidad = cantidad+n;
-		System.out.println("tengo "+getCantidad());
+		this.cantidad = cantidad + n;
+		System.out.println("tengo " + getCantidad());
 	}
+
 }

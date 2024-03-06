@@ -17,11 +17,10 @@ public class UDPservidor {
 		System.out.println("Esperando datagrama...");
 		DatagramPacket recibido = new DatagramPacket(bufer, bufer.length);
 		socket.receive(recibido); // Recibe el datagrama
-		int bytesRec = recibido.getLength();
 		String paquete = new String(recibido.getData()).trim();// Obtengo el String de los datos del datagrama
 
 		// Visualizo la información
-		System.out.println("Nuero de bytes recibidos: " + bytesRec);
+		System.out.println("Nuero de bytes recibidos: " + recibido.getLength());
 		System.out.println("Contenido del paquete: " + paquete);
 		System.out.println("Puerto del mensaje: " + recibido.getPort());
 		System.out.println("IP de origen: " + recibido.getAddress().getHostAddress());

@@ -5,6 +5,7 @@ import java.net.InetAddress;
 public class Eco_Cliente {
 
     public static void main(String[] args) throws Exception {
+    	
         // Direccion de destino
         InetAddress destino = InetAddress.getByName("localhost"); // Cambia a la dirección del servidor
         int port = 12345;
@@ -28,15 +29,11 @@ public class Eco_Cliente {
             socket.receive(ecoRecibido);
 
             // Visualiza la información del eco recibido
-            int bytesRec = ecoRecibido.getLength();
             String paquete = new String(ecoRecibido.getData()).trim();
-            System.out.println("Número de bytes recibidos en el eco " + (ecoCount + 1) + ": " + bytesRec);
             System.out.println("Contenido del eco " + (ecoCount + 1) + ": " + paquete);
-            System.out.println("Puerto del eco " + (ecoCount + 1) + ": " + ecoRecibido.getPort());
-            System.out.println("IP de origen del eco " + (ecoCount + 1) + ": " + ecoRecibido.getAddress().getHostAddress());
-            System.out.println("Puerto local del eco " + (ecoCount + 1) + ": " + socket.getLocalPort());
         }
 
         socket.close();
     }
+    
 }

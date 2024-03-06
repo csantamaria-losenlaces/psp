@@ -10,7 +10,7 @@ public class Conexion {
 
 	public static void main(String[] args) throws URISyntaxException {
 		
-		String url = "https://www.wikipdia.org";
+		String url = "https://google.es";
 		URL u;
 		
 		try {
